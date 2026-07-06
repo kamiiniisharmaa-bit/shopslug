@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopslug · eCom home</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #0b1a2e;
+      line-height: 1.5;
+    }
+
+    /* container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* header / nav */
+    .navbar {
+      background: white;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #0f2b4b;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .logo i {
+      color: #2563eb;
+      font-size: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 500;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1e2f44;
+      font-size: 1rem;
+      padding: 0.4rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #2563eb;
+      color: #0b1a2e;
+    }
+
+    .nav-links a i {
+      margin-right: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .nav-actions i {
+      font-size: 1.3rem;
+      color: #1e2f44;
+      cursor: default;
+      transition: 0.2s;
+    }
+
+    .nav-actions i:hover {
+      color: #2563eb;
+    }
+
+    /* main page sections */
+    .section {
+      margin: 3.5rem 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title i {
+      color: #2563eb;
+      font-size: 1.8rem;
+    }
+
+    /* hero */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(145deg, #ffffff, #f1f5f9);
+      padding: 2.5rem 3rem;
+      border-radius: 2.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.02);
+      margin-top: 1rem;
+    }
+
+    .hero-content {
+      flex: 1 1 300px;
+    }
+
+    .hero-content h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content h1 span {
+      color: #2563eb;
+      background: #e0edff;
+      padding: 0 0.5rem;
+      border-radius: 8px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #334155;
+      max-width: 450px;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 0.85rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3);
+    }
+
+    .hero-image {
+      flex: 1 1 280px;
+      text-align: center;
+      font-size: 6rem;
+      color: #2563eb;
+      opacity: 0.8;
+      background: #dbeafe;
+      padding: 1.2rem 0.5rem;
+      border-radius: 2rem;
+    }
+
+    /* product grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .product-card {
+      background: white;
+      padding: 1.5rem 1rem;
+      border-radius: 1.8rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: 0.25s ease;
+      border: 1px solid #edf2f7;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.04);
+      border-color: #cbd5e1;
+    }
+
+    .product-card i {
+      font-size: 3.2rem;
+      color: #2563eb;
+      margin-bottom: 0.75rem;
+      background: #eef4ff;
+      padding: 0.5rem;
+      border-radius: 60px;
+    }
+
+    .product-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .product-card .price {
+      color: #1e293b;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .product-card .old-price {
+      color: #94a3b8;
+      text-decoration: line-through;
+      font-size: 0.9rem;
+      margin-left: 0.4rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #f1f5f9;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #334155;
+      letter-spacing: 0.3px;
+      margin-top: 0.3rem;
+    }
+
+    /* info pages (about, privacy, terms) – hidden by default, shown via :target */
+    .page-panel {
+      display: none;
+      background: white;
+      padding: 2.5rem 3rem;
+      border-radius: 2.5rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+      border: 1px solid #ecf3fa;
+      margin: 2.5rem 0;
+    }
+
+    .page-panel:target {
+      display: block;
+    }
+
+    .page-panel h2 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .page-panel h2 i {
+      color: #2563eb;
+    }
+
+    .page-panel p {
+      color: #1e293b;
+      max-width: 760px;
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+    }
+
+    .page-panel ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .page-panel ul li {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #e9eef3;
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .page-panel ul li i {
+      color: #2563eb;
+      width: 1.6rem;
+    }
+
+    /* home section – we want home always visible, but also can be targeted */
+    #home:target ~ .home-section,
+    #home:target ~ .product-section {
+      /* keep visible */
+    }
+
+    /* default: show home & product section, hide panels */
+    .home-section, .product-section {
+      display: block;
+    }
+
+    .page-panel {
+      display: none;
+    }
+
+    /* when a panel is targeted, hide home & product section */
+    #about:target ~ .home-section,
+    #about:target ~ .product-section,
+    #privacy:target ~ .home-section,
+    #privacy:target ~ .product-section,
+    #terms:target ~ .home-section,
+    #terms:target ~ .product-section {
+      display: none;
+    }
+
+    #about:target ~ .page-panel#about,
+    #privacy:target ~ .page-panel#privacy,
+    #terms:target ~ .page-panel#terms {
+      display: block;
+    }
+
+    /* footer */
+    .footer {
+      margin-top: 4rem;
+      padding: 2rem 0 1.5rem;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      color: #475569;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: #334155;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      color: #2563eb;
+    }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      .nav-wrapper {
+        flex-direction: column;
+        align-items: start;
+        gap: 0.8rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 1rem 1.8rem;
+      }
+
+      .hero {
+        padding: 2rem 1.5rem;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-image {
+        margin-top: 1.5rem;
+        width: 100%;
+      }
+
+      .page-panel {
+        padding: 2rem 1.5rem;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- navbar -->
+  <header class="navbar">
+    <div class="container nav-wrapper">
+      <div class="logo">
+        <i class="fas fa-store-alt"></i> Shopslug
+      </div>
+      <nav class="nav-links">
+        <a href="#home"><i class="fas fa-home"></i> Home</a>
+        <a href="#about"><i class="fas fa-circle-info"></i> About</a>
+        <a href="#privacy"><i class="fas fa-shield-alt"></i> Privacy</a>
+        <a href="#terms"><i class="fas fa-file-contract"></i> Terms</a>
+      </nav>
+      <div class="nav-actions">
+        <i class="fas fa-search"></i>
+        <i class="fas fa-shopping-bag"></i>
+        <i class="fas fa-user-circle"></i>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- hidden anchors for targeting -->
+    <span id="home"></span>
+    <span id="about"></span>
+    <span id="privacy"></span>
+    <span id="terms"></span>
+
+    <!-- HOME SECTION (always visible unless panel is targeted) -->
+    <section class="home-section section">
+      <div class="hero">
+        <div class="hero-content">
+          <h1>New <span>arrivals</span> <br>for your style</h1>
+          <p>Discover premium quality, curated just for you. Fresh drops every week.</p>
+          <a href="#" class="btn"><i class="fas fa-arrow-right" style="margin-right: 0.5rem;"></i>Shop now</a>
+        </div>
+        <div class="hero-image">
+          <i class="fas fa-box-open"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- product grid (home) -->
+    <section class="product-section section">
+      <div class="section-title">
+        <i class="fas fa-fire"></i> Trending
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <i class="fas fa-headphones"></i>
+          <h4>Audio Pro</h4>
+          <div><span class="price">$89</span> <span class="old-price">$129</span></div>
+          <div class="badge">best seller</div>
+        </div>
+        <div class="product-card">
+          <i class="fas fa-watch"></i>
+          <h4>Chrono S</h4>
+          <div><span class="price">$149</span> <span class="old-price">$199</span></div>
+          <div class="badge">-25%</div>
+        </div>
+        <div class="product-card">
+          <i class="fas fa-shoe-prints"></i>
+          <h4>Air stride</h4>
+          <div><span class="price">$74</span> <span class="old-price">$95</span></div>
+          <div class="badge">new</div>
+        </div>
+        <div class="product-card">
+          <i class="fas fa-tshirt"></i>
+          <h4>Cotton tee</h4>
+          <div><span class="price">$34</span></div>
+          <div class="badge">organic</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page-panel">
+      <h2><i class="fas fa-circle-info"></i> About Shopslug</h2>
+      <p>We are a digital-first e‑commerce brand built for the modern shopper. Our mission is to deliver quality products with transparency, speed, and a human touch.</p>
+      <p><i class="fas fa-check-circle" style="color: #2563eb; margin-right: 0.5rem;"></i> Founded in 2022, we’ve already served 50k+ customers worldwide.</p>
+      <ul>
+        <li><i class="fas fa-truck"></i> Free shipping on orders over $60</li>
+        <li><i class="fas fa-undo-alt"></i> 30-day return policy</li>
+        <li><i class="fas fa-headset"></i> 24/7 live chat support</li>
+      </ul>
+    </div>
+
+    <!-- PRIVACY PAGE -->
+    <div id="privacy" class="page-panel">
+      <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
+      <p>Your privacy matters to us. We collect only the data needed to process orders and improve your experience. We never sell or share your personal information with third parties.</p>
+      <ul>
+        <li><i class="fas fa-lock"></i> SSL encrypted checkout</li>
+        <li><i class="fas fa-eye-slash"></i> Anonymous analytics</li>
+        <li><i class="fas fa-user-check"></i> You control your data preferences</li>
+      </ul>
+      <p style="margin-top: 1rem;">For full details, contact our privacy team at <strong>privacy@Shopslug.com</strong>.</p>
+    </div>
+
+    <!-- TERMS PAGE -->
+    <div id="terms" class="page-panel">
+      <h2><i class="fas fa-file-contract"></i> Terms of Service</h2>
+      <p>By using Shopslug, you agree to our fair use policy. All purchases are subject to our return and refund guidelines. We reserve the right to update these terms as we grow.</p>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> All prices are in USD</li>
+        <li><i class="fas fa-clock"></i> Orders ship within 1-2 business days</li>
+        <li><i class="fas fa-credit-card"></i> Secure payment via Stripe & PayPal</li>
+      </ul>
+      <p style="margin-top: 1rem;">Last updated: January 2026</p>
+    </div>
+
+  </main>
+
+  <!-- footer -->
+  <footer class="container footer">
+    <span>&copy; 2026 Shopslug — style your world.</span>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#terms">Terms</a>
+    </div>
+  </footer>
+
+  <!-- small note: using :target toggles. home is always visible unless one of about/privacy/terms is targeted -->
+  <!-- all pages are inside the same document, no external files -->
+</body>
+</html>
